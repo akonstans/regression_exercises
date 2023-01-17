@@ -40,27 +40,42 @@ def scale_splits(X_train, X_val, X_test, scaler, columns = False):
     '''
     if columns:
         scale = scaler.fit(X_train[columns])
+
         train_initial = pd.DataFrame(scale.transform(X_train[columns]),
         columns= X_train[columns].columns.values).set_index([X_train.index.values])
+
         val_initial = pd.DataFrame(scale.transform(X_val[columns]),
         columns= X_val[columns].columns.values).set_index([X_val.index.values])
+
         test_initial = pd.DataFrame(scale.transform(X_test[columns]),
         columns= X_test[columns].columns.values).set_index([X_test.index.values])
+
         train_scaled = X_train.copy()
+
         val_scaled = X_val.copy()
+
         test_scaled = X_test.copy()
+
         train_scaled.update(train_initial)
+
         val_scaled.update(val_initial)
+
         test_scaled.update(test_initial)
 
     else:
         scale = scaler.fit(X_train)
+
         train_scaled = pd.DataFrame(scale.transform(X_train),
         columns= X_train.columns.values).set_index([X_train.index.values])
+
         val_scaled = pd.DataFrame(scale.transform(X_val),
         columns= X_val.columns.values).set_index([X_val.index.values])
+
         test_scaled = pd.DataFrame(scale.transform(X_test),
         columns= X_test.columns.values).set_index([X_test.index.values])
+
     return train_scaled, val_scaled, test_scaled
+
+    
 
 
