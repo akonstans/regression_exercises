@@ -1,13 +1,4 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-import new_lib as nl
-import sklearn.preprocessing
-from sklearn.model_selection import train_test_split
-import wrangle as w
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score
 from math import sqrt
 
 def plot_residuals(y, y_hat):
